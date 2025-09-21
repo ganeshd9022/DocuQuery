@@ -1,5 +1,4 @@
-# ingest.py
-# Simple ingestion and chunking of text files into JSONL chunks.
+
 import os, argparse, json
 from pathlib import Path
 

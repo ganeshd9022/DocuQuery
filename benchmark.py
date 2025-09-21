@@ -1,5 +1,4 @@
-# benchmark.py
-# Very simple end-to-end latency tester (requires server running)
+
 import time, requests
 def test_query(q, k=4):
     t0 = time.perf_counter()

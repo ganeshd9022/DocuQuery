@@ -1,5 +1,4 @@
-# index.py
-# Build embeddings using sentence-transformers and save a FAISS index + metadata.
+
 import argparse, json, pickle
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -18,7 +17,7 @@ def load_chunks(jsonl_path):
 def build_index(chunks, model_name='all-MiniLM-L6-v2', index_path='faiss_index.idx', meta_path='docs_meta.pkl'):
     model = SentenceTransformer(model_name)
     emb = model.encode(chunks, show_progress_bar=True, convert_to_numpy=True)
-    # Normalize for cosine similarity
+
     faiss.normalize_L2(emb)
     d = emb.shape[1]
     index = faiss.IndexFlatIP(d)

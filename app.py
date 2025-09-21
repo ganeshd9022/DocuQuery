@@ -1,4 +1,4 @@
-# app.py
+
 import streamlit as st
 import faiss, tempfile, os
 import pickle
@@ -8,9 +8,7 @@ from prompt_builder import build_prompt
 from llama_wrapper import generate_from_prompt
 import pdfplumber
 
-# -------------------------------
-# Helpers
-# -------------------------------
+
 def extract_text_from_pdf(file) -> str:
     text = ""
     with pdfplumber.open(file) as pdf:
@@ -41,9 +39,7 @@ def build_faiss_index(chunks, model):
     index.add(embs)
     return index, chunks
 
-# -------------------------------
-# Streamlit UI
-# -------------------------------
+
 st.title("📚 CPU-based RAG with PDF Upload")
 
 uploaded_file = st.file_uploader("Upload a PDF", type=["pdf"])
@@ -74,13 +70,13 @@ if st.button("Get Answer"):
             D, I = st.session_state["index"].search(q_emb, k)
             retrieved = [st.session_state["chunks"][idx] for idx in I[0]]
 
-            # Build prompt
+           
             prompt = build_prompt(query, retrieved)
 
-            # Generate answer from llama.cpp
+
             answer = generate_from_prompt(prompt)
 
-            # Display
+  
             st.subheader("💡 Answer")
             st.write(answer)
 

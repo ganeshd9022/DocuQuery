@@ -1,13 +1,11 @@
-# llama_wrapper.py
-# Thin wrapper that calls a compiled llama.cpp 'main' binary.
-# Expects: ./main -m models/ggml-model.bin -p "PROMPT" -n 256
+
 import subprocess, shlex, os, tempfile
 
 LLAma_BIN = os.environ.get('LLAMA_CPP_BIN', './main')
 MODEL_PATH = os.environ.get('LLAMA_CPP_MODEL', 'models/ggml-model.bin')
 
 def generate_from_prompt(prompt: str, n_predict: int = 256, temp_prefix='tmp_prompt_'):
-    # Write prompt to a temporary file and call llama.cpp with -f
+    
     with tempfile.NamedTemporaryFile('w+', delete=False, prefix=temp_prefix, suffix='.txt') as tf:
         tf.write(prompt)
         tf.flush()

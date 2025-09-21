@@ -1,4 +1,4 @@
-# serve.py
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 import faiss, pickle, numpy as np
@@ -12,7 +12,7 @@ class Query(BaseModel):
     q: str
     k: int = 4
 
-# Load index and metadata at startup (paths are defaults used by index.py)
+
 INDEX_PATH = 'faiss_index.idx'
 META_PATH = 'docs_meta.pkl'
 MODEL_NAME = 'all-MiniLM-L6-v2'
