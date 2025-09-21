@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+models/
+*.idx
+*.pkl
+*.bin
+/venv
